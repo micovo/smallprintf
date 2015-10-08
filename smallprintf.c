@@ -7,19 +7,20 @@
  *
  *	SMALLPRINTF is an lightweigth printf for the microcontrolers
  *
- *	Main feature is putchar function as an input parameter of the smallprintf.
+ *	Main feature is putchar function passed into smallprintf as its input parameter
+ *	uint16_t smallprintf(void (*small_putchar)(char), char * str, ...)
  *
  *	You can use smallprintf this way:
  *	#define uartprintf(...)  smallprintf(UART_SendByte, __VA_ARGS__)
- *	#define lcdprintf(...)   smallprintf(HD44780_PutChar, __VA_ARGS__
+ *	#define lcdprintf(...)   smallprintf(HD44780_PutChar, __VA_ARGS__)
  *
- *	Implementation of your own putchar function is mandatory its format is simple:
+ *	Implementation of your own putchar function is mandatory. Its format is simple:
  *	void UART_SendByte (char charater)
  *	{
  *		//Code that sends character into your peripheral
  *	}
  *
- *	GCC printf-like features:
+ *	Supported conversions:
  *
  *	%s - String with left and right justification
  *
