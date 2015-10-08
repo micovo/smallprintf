@@ -177,7 +177,7 @@ uint16_t smallprintf(void (*small_putchar)(char), char * str, ...)
 
 			if (*x == '-')
 			{
-				justify = JUSTIFY_LEFT
+				justify = JUSTIFY_LEFT;
 			}
 
 			digits = 0;
@@ -248,7 +248,7 @@ uint16_t smallprintf(void (*small_putchar)(char), char * str, ...)
 							char length = strlen(val);
 							if (length < digits)
 							{
-								spaces_fill = digits - length;
+								spaces = digits - length;
 							}
 						}
 
