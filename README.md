@@ -17,7 +17,7 @@ void UART_SendByte (char charater)
 }
 </pre>
 ### Supported conversions:
-%s - String with left and right justification
+%s - Text string, left and right justification supported
 
 %x - Hexadecimal conversion, is always in uppercase and the legth of the output character is HEXA_STRING_MAX_LENGTH by default
  
