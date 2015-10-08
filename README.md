@@ -1,5 +1,5 @@
-# smallprintf
-smallprintf is a lightweigth ANSI C implementation of the classic GCC printf function optimalized for the microcontrolers
+# Smallprintf
+Smallprintf is a lightweigth ANSI C implementation of the classic GCC printf function optimalized for the microcontrolers
 
 Main feature is putchar function passed into smallprintf as its input parameter
 <pre>uint16_t smallprintf(void (*small_putchar)(char), char * str, ...)</pre>
@@ -9,7 +9,7 @@ You can use smallprintf this way:<br>
 &#35;define lcdprintf(...)   smallprintf(HD44780_PutChar, __VA_ARGS__)
 </pre>
 
-Implementation of your own putchar function is mandatory. Its format is simple:
+Smallprintf putcha format example:
 <pre>
 void UART_SendByte (char charater)
 {
