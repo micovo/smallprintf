@@ -9,7 +9,7 @@ You can use smallprintf this way:<br>
 &#35;define lcdprintf(...)   smallprintf(HD44780_PutChar, __VA_ARGS__)
 </pre>
 
-Smallprintf putcha format example:
+Smallprintf putchar function example:
 <pre>
 void UART_SendByte (char charater)
 {
