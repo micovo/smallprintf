@@ -159,7 +159,7 @@ uint16_t smallprintf(void (*small_putchar)(char), char * str, ...)
 	//uint8_t zerofill = 0;
 	uint8_t digits = 0;
 	uint8_t justify = JUSTIFY_RIGHT;
-	uint8_t spaces_fill = 0;
+	uint8_t spaces = 0;
 
 
 	bytes_written = 0;
