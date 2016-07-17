@@ -2,7 +2,7 @@
 /**
  *	@file smallprintf.c
  *
- *	@created 8. 10. 2015
+ *	@created 17. 7. 2015
  *	@author Mica (michalhrouda@gmail.com)
  *
  *	SMALLPRINTF is an lightweigth printf for the microcontrolers
@@ -47,17 +47,14 @@
 #include <stdint.h>
 #include <string.h>
 
-#include "uart.h"
 
-
-
-#define UNSIGNED_NUMBER_TYPE 		uint16_t
-#define SIGNED_NUMBER_TYPE 			int16_t
-#define DECIMAL_STRING_MAX_LENGTH 	5
+#define UNSIGNED_NUMBER_TYPE 		uint32_t
+#define SIGNED_NUMBER_TYPE 		int32_t
+#define DECIMAL_STRING_MAX_LENGTH 	6
 #define HEXA_STRING_MAX_LENGTH 		4
 
-#define JUSTIFY_RIGHT				0
-#define JUSTIFY_LEFT				1
+#define JUSTIFY_RIGHT			0
+#define JUSTIFY_LEFT			1
 
 
 /*****************************************************************************/
@@ -102,6 +99,12 @@ uint16_t smallprintf_decadic(void (*small_putchar)(char), UNSIGNED_NUMBER_TYPE v
 			}
 		}
 		small_putchar (tempchar[i] + '0');
+		bytes_written++;
+	}
+
+	if (bytes_written == 0)
+	{
+		small_putchar ('0');
 		bytes_written++;
 	}
 
@@ -178,6 +181,7 @@ uint16_t smallprintf(void (*small_putchar)(char), char * str, ...)
 			if (*x == '-')
 			{
 				justify = JUSTIFY_LEFT;
+				x++;
 			}
 
 			digits = 0;
@@ -252,10 +256,12 @@ uint16_t smallprintf(void (*small_putchar)(char), char * str, ...)
 							}
 						}
 
-						if (justify == JUSTIFY_LEFT)
+
+						if ((spaces > 0) && (justify == JUSTIFY_LEFT))
 						{
 							while (spaces--) small_putchar (' ');
 						}
+
 
 						while (*val != 0)
 						{
@@ -263,7 +269,7 @@ uint16_t smallprintf(void (*small_putchar)(char), char * str, ...)
 							bytes_written++;
 						}
 
-						if (justify == JUSTIFY_RIGHT)
+						if ((spaces > 0) && (justify == JUSTIFY_RIGHT))
 						{
 							while (spaces--) small_putchar (' ');
 						}
