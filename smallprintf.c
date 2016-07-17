@@ -141,6 +141,12 @@ uint16_t smallprintf_hexadecimal(void (*small_putchar)(char), UNSIGNED_NUMBER_TY
 		small_putchar((temp > 9) ? temp + 'A' - 10: temp + '0');
 		bytes_written++;
 	}
+	
+	if (bytes_written == 0)
+	{
+		small_putchar ('0');
+		bytes_written++;
+	}
 
 	return bytes_written;
 }
